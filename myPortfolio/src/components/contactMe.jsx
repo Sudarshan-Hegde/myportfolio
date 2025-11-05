@@ -177,7 +177,7 @@ function ContactMe() {
               <span>LinkedIn</span>
             </a>
             <a 
-              href="https://github.com/SudarshanHegde2004"
+              href="https://github.com/Sudarshan-Hegde"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-white/80 transition-colors duration-300 flex items-center space-x-2"

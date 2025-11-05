@@ -59,7 +59,7 @@ const Navbar = () => {
           { platform: "linkedin", url: "https://www.linkedin.com/in/sudarshan-hegde-474856226/" },
           { platform: "reddit", url: "https://www.reddit.com/user/Sudarshan_Hegde_2004/" },
           { platform: "instagram", url: "https://www.instagram.com/sudarshan.hegde.2004/" },
-          { platform: "github", url: "https://github.com/SudarshanHegde2004" },
+          { platform: "github", url: "https://github.com/Sudarshan-Hegde" },
         ].map(({ platform, url }, index) => (
           <a key={index} href={url} target="_blank" rel="noopener noreferrer">
             <img
@@ -122,7 +122,7 @@ const Navbar = () => {
                 { platform: "linkedin", url: "https://www.linkedin.com/in/sudarshan-hegde-474856226/" },
                 { platform: "reddit", url: "https://www.reddit.com/user/Sudarshan_Hegde_2004/" },
                 { platform: "instagram", url: "https://www.instagram.com/sudarshan.hegde.2004/" },
-                { platform: "github", url: "https://github.com/SudarshanHegde2004" },
+                { platform: "github", url: "https://github.com/Sudarshan-Hegde" },
               ].map(({ platform, url }, index) => (
                 <a key={index} href={url} target="_blank" rel="noopener noreferrer">
                   <img
