@@ -8,7 +8,7 @@ import Cert from './components/Cert'
 import ContactMe from './components/contactMe'
 
 function App() {
-  const bubbles = Array.from({ length: 100 }).map((_, index) => {
+  const bubbles = Array.from({ length: 60 }).map((_, index) => {
     const size = Math.floor(Math.random() * 150) + 100
     const top = Math.random() * 100
     const left = Math.random() * 100
@@ -19,6 +19,10 @@ function App() {
       'rgba(138, 43, 226, 0.5)',    // Blue Violet
       'rgba(25, 25, 112, 0.6)',     // Midnight Blue
       'rgba(75, 0, 130, 0.4)',      // Indigo
+      'rgba(0, 0, 139, 0.5)',       // Dark Blue
+      'rgba(0, 0, 205, 0.4)',       // Medium Blue
+      'rgba(0, 100, 0, 0.3)',       // Dark Green (deep blue-green)
+      'rgba(0, 76, 153, 0.5)',      // Deep Blue
     ]
     const background = colors[Math.floor(Math.random() * colors.length)]
 
