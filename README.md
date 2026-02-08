@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Sudarshan Hegde - Portfolio Website
 
 A modern, responsive portfolio website built with React and Vite, featuring stunning animations, glassmorphism design, and dynamic user interactions.
@@ -177,3 +178,42 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 > **"Surround yourself with relentless humans. People who plan in decades, but live in moments. Train like savages, but create like artists. Obsess in work, relax in life. People who know this is finite and choose to play infinite games. Find people going up mountains and climb together."**
 
 **Made with ❤️ by Sudarshan Hegde**
+=======
+# My Portfolio
+
+A simple portfolio website built with React, Vite, and Tailwind CSS.
+
+## Getting Started
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:5173/`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Tech Stack
+
+- **React** - UI library
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+>>>>>>> master
