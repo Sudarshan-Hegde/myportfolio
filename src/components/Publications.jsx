@@ -12,12 +12,15 @@ function Publications() {
       description:
         "This research proposes an end-to-end framework that integrates RFB-ESRGAN for 4 X spatial resolution enhancement of multi-spectral imagery with a Deep Bayesian Active Learning loop to optimize data efficiency. By synergizing perceptual super-resolution and hybrid query strategies, the system achieves state-of-the-art classification accuracy while reducing expert annotation requirements by 85% on accessible cloud infrastructure.",
       moreDescription:
-        "Abstract: In the contemporary era of digital agriculture, the ability to accurately classify and monitor land cover types is paramount for ensuring food security, optimizing resource allocation, and conducting precise yield estimation. However, the scalability of such systems in developing regions is frequently stifled by the coarse spatial resolution of public satellite data and the prohibitive expense of expert ground-truth annotation. To bridge this gap, we propose a comprehensive, end-to-end decision support system that synergizes a Perceptual Extreme Super-Resolution Network with Receptive Field Blocks (RFB-ESRGAN) and a label-efficient Deep Bayesian Active Learning strategy. We deploy a Generative Adversarial Network enhanced with multi-scale Receptive Field Blocks to infer and reconstruct latent high-frequency textures, achieving a fourfold increase in the spatial resolution of multi-spectral imagery. To concurrently address data scarcity, we employ a hybrid query strategy combining Distance-Based Sampling and Spatial-Spectral Entropy, which iteratively identifies and requests labels for only the most mathematically informative samples. Validated on accessible cloud infrastructure using the BigEarthNet archive, this approach significantly enhances classification accuracy for complex heterogeneous crop patterns while reducing labeled data requirements by approximately 85% compared to random sampling baselines, offering a robust pathway for democratizing precision agriculture analytics.",
+        "Abstract: In the contemporary era of digital agriculture, the ability to accurately classify and monitor land cover types has become paramount for ensuring food security, optimizing resource allocation, and conducting precise yield estimation. However, the coarse spatial resolution of public satellite data and the prohibitive expense of expert ground-truth annotation have frequently stifled the scalability of such systems in developing regions. To bridge this gap, we have proposed a comprehensive, end-to-end decision support system. This system has synergized a Perceptual Extreme Super-Resolution Network with Receptive Field Blocks (RFB-ESRGAN) and a label-efficient Deep Bayesian Active Learning strategy. 	We have proposed a Generative Adversarial Network enhanced with multi-scale Receptive Field Blocks. This has allowed us to infer and reconstruct latent high-frequency textures. Consequently, it has achieved a fourfold increase in the spatial resolution of multi-spectral imagery. To concurrently address data scarcity, we have employed a hybrid query strategy. This strategy has combined Distance-Based Sampling and Spatial-Spectral Entropy. It has iteratively identified and requested labels for only the most mathematically informative samples. We have validated this approach on accessible cloud infrastructure using the BigEarthNet archive. This approach has significantly enhanced classification accuracy for complex heterogeneous crop patterns. Furthermore, it has reduced labeled data requirements by approximately 85% compared to random sampling baselines. Thus, it has offered a robust pathway for democratizing precision agriculture analytics.",
       images: [
-        `${import.meta.env.BASE_URL}research01.png`,
-        `${import.meta.env.BASE_URL}research02.png`,
+        `${import.meta.env.BASE_URL}research01.jpg`,
+        `${import.meta.env.BASE_URL}research02.jpg`,
+        `${import.meta.env.BASE_URL}research03.jpg`,
       ],
-      certLink: "https://www.example.com/your-certificate-link-1",
+      certLink: "https://ijsdr.org/certificatemanager.php?a_rid=307202",
+      paperLink: "https://ijsdr.org/papers/IJSDR2602037.pdf",
+      confirmationLink: "https://ijsdr.org/confirmationlettermanager.php?a_rid=307202",
     },
   ];
 
@@ -168,7 +171,7 @@ function Publications() {
               <img
                 src={selectedCert.images[modalImageIndex]}
                 alt={selectedCert.title}
-                className="object-cover w-full rounded-lg h-64 md:h-auto"
+                className="object-cover w-full md:max-w-[600px] rounded-lg h-64 md:h-auto"
               />
               
               {/* Navigation Buttons */}
@@ -210,14 +213,36 @@ function Publications() {
               </div>
 
               {/* Action Button */}
-              <div>
-                <a
-                  href={selectedCert.certLink}
+              <div className="flex flex-col gap-4">
+              <a
+                  href={selectedCert.paperLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center w-auto text-gray-700 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 box-border border border-gray-300 dark:border-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 shadow-sm font-medium leading-5 rounded-lg text-base px-6 py-3 focus:outline-none"
                 >
-                  View Full Certificate
+                  Read Full Paper
+                  <svg className="w-5 h-5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                  </svg>
+                </a>
+                <a
+                    href={selectedCert.certLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center w-auto text-gray-700 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 box-border border border-gray-300 dark:border-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 shadow-sm font-medium leading-5 rounded-lg text-base px-6 py-3 focus:outline-none"
+                  >
+                    View Full Certificate
+                    <svg className="w-5 h-5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                    </svg>
+                  </a>
+                <a
+                  href={selectedCert.confirmationLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center w-auto text-gray-700 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 box-border border border-gray-300 dark:border-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 shadow-sm font-medium leading-5 rounded-lg text-base px-6 py-3 focus:outline-none"
+                >
+                  View Confirmation Letter
                   <svg className="w-5 h-5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
                   </svg>

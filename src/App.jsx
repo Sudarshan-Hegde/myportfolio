@@ -13,7 +13,7 @@ function App() {
       <Bio  />
       <Projects />
       <Certificates />
-      {/*<Publications /> */}
+      <Publications />
       <Contact />
       <footer className="bg-stone-900/50 text-center py-12">
         <div className="max-w-4xl mx-auto px-6">
