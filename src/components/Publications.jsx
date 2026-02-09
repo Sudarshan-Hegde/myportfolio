@@ -240,7 +240,7 @@ function Publications() {
                   href={selectedCert.confirmationLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center w-auto text-gray-700 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 box-border border border-gray-300 dark:border-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 shadow-sm font-medium leading-5 rounded-lg text-base px-6 py-3 focus:outline-none"
+                  className=" mb-10 inline-flex items-center w-auto text-gray-700 dark:text-gray-400 bg-gray-200 dark:bg-gray-700 box-border border border-gray-300 dark:border-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600 hover:text-gray-900 dark:hover:text-white focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 shadow-sm font-medium leading-5 rounded-lg text-base px-6 py-3 focus:outline-none"
                 >
                   View Confirmation Letter
                   <svg className="w-5 h-5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
