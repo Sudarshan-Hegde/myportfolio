@@ -49,7 +49,7 @@ const Bio = () => {
         <div className="md:flex">
           {/* Left side - Image and Contact Button */}
           <div className="md:w-1/3 p-6 flex flex-col items-center">
-            <div className="w-96 h-96 rounded-full overflow-hidden mb-4">
+            <div className="w-96 h-96 rounded-full overflow-hidden mb-4 mt-10 md:mt-0">
               <img src={`${import.meta.env.BASE_URL}profile_pic.jpg`} alt="Profile" className="w-full h-full object-cover" />
             </div>
             <div>
@@ -108,12 +108,12 @@ const Bio = () => {
       </div>
     </section>
       {/* Edu section */}
-      <div className="bg-stone-900/50 px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-full md:px-24 lg:px-8 lg:py-20">
+      <div className="bg-stone-900/50 px-4 py-16 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-full md:px-24 lg:px-8 lg:py-20">
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-600 mb-4">My Education Journey</h2>
           <div className="w-[200px] h-1 border-b-4 border-yellow-500 mx-auto rounded-3xl"></div>
         </div>
-        <div className="mx-20 grid gap-10 lg:grid-cols-3 sm:grid-cols-1  ">
+        <div className="mx-auto grid gap-10 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 md:px-10">
           {/* High School */}
           <div className=" bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:border-blue-400 hover:bg-white/10">
             <div className="flex items-center justify-between mb-6">
