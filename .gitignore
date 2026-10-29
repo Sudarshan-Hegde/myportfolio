@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .vercel
 .env*.local
+
+# Rust build output (the wasm in src/wasm/pkg is committed)
+rust/target

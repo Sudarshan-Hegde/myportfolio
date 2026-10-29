@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { loadSanitizer } from '../wasm';
 import Navbar from '../components/Navbar';
 import { Footer } from '../App';
 
@@ -13,8 +14,17 @@ const LogPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const snap = await getDoc(doc(db, 'posts', slug));
-        if (snap.exists()) setPost({ id: snap.id, ...snap.data() });
+        const [snap, sanitize] = await Promise.all([
+          getDoc(doc(db, 'posts', slug)),
+          loadSanitizer().catch(err => {
+            console.error('Sanitizer failed to load:', err);
+            return (html) => html;
+          }),
+        ]);
+        if (snap.exists()) {
+          const data = snap.data();
+          setPost({ id: snap.id, ...data, content: sanitize(data.content || '') });
+        }
       } finally {
         setLoading(false);
       }

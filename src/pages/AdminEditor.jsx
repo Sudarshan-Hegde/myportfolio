@@ -15,6 +15,7 @@ import { Node } from '@tiptap/core';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { db, auth } from '../firebase';
+import { loadSanitizer, odtToHtml, compressImageWasm } from '../wasm';
 
 /* ============================================================ */
 /* Constants                                                     */
@@ -95,16 +96,27 @@ const escapeHtml = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Resize + compress an image file, return data URL.
-const compressImage = (file) =>
-  new Promise((resolve, reject) => {
-    // Small PNGs (logos, diagrams) keep transparency untouched
-    if (file.type === 'image/png' && file.size < 150 * 1024) {
+// Uses the Rust/WASM encoder; formats it can't decode (SVG, AVIF, HEIC) fall back to canvas.
+const compressImage = async (file) => {
+  // Small PNGs (logos, diagrams) keep transparency untouched
+  if (file.type === 'image/png' && file.size < 150 * 1024) {
+    return new Promise((resolve, reject) => {
       const r = new FileReader();
       r.onload = () => resolve(r.result);
       r.onerror = reject;
       r.readAsDataURL(file);
-      return;
-    }
+    });
+  }
+  try {
+    return await compressImageWasm(file);
+  } catch (err) {
+    console.warn('WASM image compression failed, using canvas:', err);
+    return compressImageCanvas(file);
+  }
+};
+
+const compressImageCanvas = (file) =>
+  new Promise((resolve, reject) => {
     const url = URL.createObjectURL(file);
     const img = new window.Image();
     img.onload = () => {
@@ -364,7 +376,7 @@ const AdminEditor = () => {
         title: title.trim(),
         excerpt: excerpt.trim(),
         tags: tagList,
-        content: editor.getHTML(),
+        content: (await loadSanitizer())(editor.getHTML()),
         published: shouldPublish,
         updatedAt: serverTimestamp(),
         ...(!currentIdRef.current && { createdAt: serverTimestamp() }),
@@ -541,37 +553,9 @@ const AdminEditor = () => {
           .map(p => p.split(/\n{1,}/).map(par => `<p>${escapeHtml(par.trim())}</p>`).join(''))
           .join('<hr data-page-break="true" class="page-break">');
       } else if (ext === 'odt') {
-        const JSZip = (await import('jszip')).default;
-        const zip = await JSZip.loadAsync(await file.arrayBuffer());
-        const xml = await zip.file('content.xml').async('string');
-        const docXml = new DOMParser().parseFromString(xml, 'application/xml');
-        const parts = [];
-        const walk = (el) => {
-          for (const child of el.children) {
-            const tag = child.localName;
-            if (tag === 'h') {
-              const lvl = Math.min(4, parseInt(child.getAttribute('text:outline-level') || '2'));
-              parts.push(`<h${lvl}>${escapeHtml(child.textContent)}</h${lvl}>`);
-            } else if (tag === 'p') {
-              if (child.textContent.trim()) parts.push(`<p>${escapeHtml(child.textContent)}</p>`);
-            } else if (tag === 'list') {
-              const items = Array.from(child.querySelectorAll('*'))
-                .filter(n => n.localName === 'p')
-                .map(n => `<li>${escapeHtml(n.textContent)}</li>`)
-                .join('');
-              if (items) parts.push(`<ul>${items}</ul>`);
-            } else {
-              walk(child);
-            }
-          }
-        };
-        walk(docXml.documentElement);
-        html = parts.join('');
+        html = await odtToHtml(await file.arrayBuffer());
       } else if (ext === 'html' || ext === 'htm') {
-        const raw = await file.text();
-        const parsed = new DOMParser().parseFromString(raw, 'text/html');
-        parsed.querySelectorAll('script, style, iframe, object, embed, link, meta').forEach(n => n.remove());
-        html = parsed.body.innerHTML;
+        html = (await loadSanitizer())(await file.text());
       } else if (ext === 'txt' || ext === 'md') {
         const raw = await file.text();
         html = raw.split(/\n\s*\n/).map(p => `<p>${escapeHtml(p.trim()).replace(/\n/g, '<br>')}</p>`).join('');

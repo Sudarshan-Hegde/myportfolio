@@ -2,14 +2,14 @@ import React from 'react';
 
 const downloadCV = () => {
   const link = document.createElement('a');
-  link.href = '/Sudarshan_Hegde-Resume.pdf';
-  link.download = 'Sudarshan_Hegde-Resume.pdf';
+  link.href = '/Sudarshan_Hegde.pdf';
+  link.download = 'Sudarshan_Hegde.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 const viewCV = () => {
-  window.open('/Sudarshan_Hegde-Resume.pdf', '_blank');
+  window.open('/Sudarshan_Hegde.pdf', '_blank');
 };
 
 /* ---------------------------------------------------------- */
@@ -65,7 +65,7 @@ const Bio = () => {
                   ['Name', 'SUDARSHAN R. HEGDE'],
                   ['Role', 'CSE UNDERGRADUATE · ML ENGINEER'],
                   ['Institute', 'VISVESVARAYA TECHNOLOGICAL UNIVERSITY (VTU)'],
-                  ['CGPA', '9.1 / 10 · CLASS OF 2026'],
+                  ['CGPA', '8.9 / 10 · CLASS OF 2026'],
                   ['Focus', 'ML · DEEP LEARNING · FULL-STACK'],
                   ['Location', 'BANGALORE · KARNATAKA · INDIA'],
                 ].map(([k, v]) => (
@@ -142,8 +142,8 @@ const Bio = () => {
                 no: '01', tag: 'The Degree',
                 title: 'B.E. Computer Science and Engineering',
                 sub: 'SAMBHRAM INSTITUTE OF TECHNOLOGY · VTU · BANGALORE',
-                body: 'Pursuing a Bachelor of Engineering in Computer Science with a CGPA of 9.1/10. Specialising in data structures, algorithms, machine learning, and cloud computing.',
-                meta: '2022 – 2026', status: '9.1 CGPA · Ongoing',
+                body: 'Bachelor of Engineering in Computer Science with a CGPA of 8.9/10. Specialising in data structures, algorithms, machine learning, and cloud computing.',
+                meta: '2022 – 2026', status: '8.9 CGPA · Completed',
               },
               {
                 no: '02', tag: 'The Stream',
